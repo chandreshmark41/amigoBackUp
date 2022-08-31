@@ -104,6 +104,7 @@ class _TCODetailsScreenCopyWidgetState
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
                         width: 300,
@@ -112,68 +113,68 @@ class _TCODetailsScreenCopyWidgetState
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
-                        child: SingleChildScrollView(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Container(
-                                width: 300,
-                                height: 60,
-                                decoration: BoxDecoration(
-                                  color: Color(0xFF7391EF),
-                                ),
-                                child: Align(
-                                  alignment: AlignmentDirectional(0, 0),
-                                  child: Text(
-                                    'Total Expenditure Cost',
-                                    textAlign: TextAlign.center,
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyText1,
-                                  ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Container(
+                              width: double.infinity,
+                              height: 60,
+                              decoration: BoxDecoration(
+                                color: Color(0xFF7391EF),
+                                border: Border.all(
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryNeutral900,
                                 ),
                               ),
-                              Builder(
-                                builder: (context) {
-                                  final costName = functions
-                                      .getCostNameColumn(
-                                          tCODetailsScreenCopyFPNTCODetailsResponse
-                                              .jsonBody)
-                                      .toList();
-                                  return ListView.builder(
-                                    padding: EdgeInsets.zero,
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.vertical,
-                                    itemCount: costName.length,
-                                    itemBuilder: (context, costNameIndex) {
-                                      final costNameItem =
-                                          costName[costNameIndex];
-                                      return Container(
-                                        width: 300,
-                                        height: 60,
-                                        decoration: BoxDecoration(
+                              child: Align(
+                                alignment: AlignmentDirectional(0, 0),
+                                child: Text(
+                                  'Total Expenditure Cost',
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.of(context).bodyText1,
+                                ),
+                              ),
+                            ),
+                            Builder(
+                              builder: (context) {
+                                final costNameColumn = functions
+                                    .getCostNameColumn(
+                                        tCODetailsScreenCopyFPNTCODetailsResponse
+                                            .jsonBody)
+                                    .toList();
+                                return ListView.builder(
+                                  padding: EdgeInsets.zero,
+                                  shrinkWrap: true,
+                                  scrollDirection: Axis.vertical,
+                                  itemCount: costNameColumn.length,
+                                  itemBuilder: (context, costNameColumnIndex) {
+                                    final costNameColumnItem =
+                                        costNameColumn[costNameColumnIndex];
+                                    return Container(
+                                      height: 60,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        border: Border.all(
                                           color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          border: Border.all(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryNeutral900,
-                                          ),
+                                              .primaryNeutral900,
                                         ),
-                                        child: Align(
-                                          alignment: AlignmentDirectional(0, 0),
-                                          child: Text(
-                                            costNameItem,
-                                            textAlign: TextAlign.center,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText1,
-                                          ),
+                                      ),
+                                      child: Align(
+                                        alignment: AlignmentDirectional(0, 0),
+                                        child: Text(
+                                          costNameColumnItem,
+                                          textAlign: TextAlign.center,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1,
                                         ),
-                                      );
-                                    },
-                                  );
-                                },
-                              ),
-                            ],
-                          ),
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
+                            ),
+                          ],
                         ),
                       ),
                     ],
