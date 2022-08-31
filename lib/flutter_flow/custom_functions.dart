@@ -214,7 +214,7 @@ List<dynamic> getTableDataForTcoDetailsCopy(dynamic tcoDetailsResponse) {
   return listOfList;
 }
 
-List<String> getCostNameColumn(dynamic responseData) {
+List<dynamic> getCostNameColumn(dynamic responseData) {
   Map<String, dynamic> vData = responseData["vData"];
 
   var returnList = <String>[];

@@ -111,58 +111,51 @@ class _TCODetailsScreenCopyWidgetState
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).primaryPrimary300,
                         ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Expanded(
-                              child: Builder(
-                                builder: (context) {
-                                  final headerList = functions
-                                      .getTCOHeaderData(FPNTCODetailsCall.vData(
-                                        tCODetailsScreenCopyFPNTCODetailsResponse
-                                            .jsonBody,
-                                      ))
-                                      .toList();
-                                  return ListView.builder(
-                                    padding: EdgeInsets.zero,
-                                    scrollDirection: Axis.horizontal,
-                                    itemCount: headerList.length,
-                                    itemBuilder: (context, headerListIndex) {
-                                      final headerListItem =
-                                          headerList[headerListIndex];
-                                      return Container(
-                                        width: 270,
-                                        height: 60,
-                                        decoration: BoxDecoration(
-                                          color: Color(0x00F1F4F8),
-                                          border: Border.all(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryShadesBlack,
-                                            width: 0.5,
-                                          ),
+                        child: Builder(
+                          builder: (context) {
+                            final headerList = functions
+                                .getTCOHeaderData(FPNTCODetailsCall.vData(
+                                  tCODetailsScreenCopyFPNTCODetailsResponse
+                                      .jsonBody,
+                                ))
+                                .toList();
+                            return SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: List.generate(headerList.length,
+                                    (headerListIndex) {
+                                  final headerListItem =
+                                      headerList[headerListIndex];
+                                  return Container(
+                                    width: 300,
+                                    height: 60,
+                                    decoration: BoxDecoration(
+                                      color: Color(0x00F1F4F8),
+                                      border: Border.all(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryShadesBlack,
+                                        width: 0.5,
+                                      ),
+                                    ),
+                                    child: Align(
+                                      alignment: AlignmentDirectional(0, 0),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            2, 0, 2, 0),
+                                        child: Text(
+                                          headerListItem,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1,
                                         ),
-                                        child: Align(
-                                          alignment: AlignmentDirectional(0, 0),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    2, 0, 2, 0),
-                                            child: Text(
-                                              headerListItem,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyText1,
-                                            ),
-                                          ),
-                                        ),
-                                      );
-                                    },
+                                      ),
+                                    ),
                                   );
-                                },
+                                }),
                               ),
-                            ),
-                          ],
+                            );
+                          },
                         ),
                       ),
                       Container(
@@ -195,18 +188,20 @@ class _TCODetailsScreenCopyWidgetState
                                   builder: (context) {
                                     final tcoDetailsRowItems =
                                         tcoDataTableListItemsItem.toList();
-                                    return Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: List.generate(
-                                          tcoDetailsRowItems.length,
-                                          (tcoDetailsRowItemsIndex) {
-                                        final tcoDetailsRowItemsItem =
-                                            tcoDetailsRowItems[
-                                                tcoDetailsRowItemsIndex];
-                                        return Expanded(
-                                          child: Container(
-                                            width: 270,
+                                    return SingleChildScrollView(
+                                      scrollDirection: Axis.horizontal,
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: List.generate(
+                                            tcoDetailsRowItems.length,
+                                            (tcoDetailsRowItemsIndex) {
+                                          final tcoDetailsRowItemsItem =
+                                              tcoDetailsRowItems[
+                                                  tcoDetailsRowItemsIndex];
+                                          return Container(
+                                            width: 300,
                                             height: 60,
                                             decoration: BoxDecoration(
                                               border: Border.all(
@@ -230,9 +225,9 @@ class _TCODetailsScreenCopyWidgetState
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                        );
-                                      }),
+                                          );
+                                        }),
+                                      ),
                                     );
                                   },
                                 );
@@ -240,6 +235,12 @@ class _TCODetailsScreenCopyWidgetState
                             );
                           },
                         ),
+                      ),
+                      ListView(
+                        padding: EdgeInsets.zero,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        children: [],
                       ),
                     ],
                   ),
