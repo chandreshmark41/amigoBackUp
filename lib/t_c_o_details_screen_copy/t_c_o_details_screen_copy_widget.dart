@@ -210,7 +210,7 @@ class _TCODetailsScreenCopyWidgetState
                                             ),
                                             child: Align(
                                               alignment:
-                                                  AlignmentDirectional(0, 0),
+                                                  AlignmentDirectional(-0.9, 0),
                                               child: Padding(
                                                 padding: EdgeInsetsDirectional
                                                     .fromSTEB(2, 0, 2, 0),
