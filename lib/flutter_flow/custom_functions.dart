@@ -217,7 +217,7 @@ List<dynamic> getTableDataForTcoDetailsCopy(dynamic tcoDetailsResponse) {
 List<dynamic> getCostNameColumn(dynamic responseData) {
   Map<String, dynamic> vData = responseData["vData"];
 
-  var returnList = <String>[];
+  var returnList = <List<String>>[];
 
   List<String> tcoRowKeys = [
     "OneTimeCost",
@@ -319,14 +319,20 @@ List<dynamic> getCostNameColumn(dynamic responseData) {
   };
   print("coming till here");
   for (String i in tcoRowKeys) {
+    var subList = <String>[];
     //print("coming in for loop" + i);
 
     if (vData.containsKey(i)) {
       String? value = tcoRowKeysMapping[i];
-      returnList.add(value!);
+      subList.add(value!);
+
+      for (String j in vData[i]) {
+        subList.add(j);
+      }
       //print(returnList);
 
     }
+    returnList.add(subList);
   }
 
   print(returnList);
