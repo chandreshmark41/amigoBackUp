@@ -195,6 +195,7 @@ class _TCODetailsScreenCopyWidgetState
                                 return ListView.builder(
                                   padding: EdgeInsets.zero,
                                   primary: false,
+                                  shrinkWrap: true,
                                   scrollDirection: Axis.vertical,
                                   itemCount: tcoDataTableListItems.length,
                                   itemBuilder:
