@@ -143,7 +143,7 @@ class _TCODetailsScreenCopyWidgetState
                                       return Row(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
-                                            MainAxisAlignment.center,
+                                            MainAxisAlignment.start,
                                         children:
                                             List.generate(tcoHeaderItems.length,
                                                 (tcoHeaderItemsIndex) {
@@ -216,7 +216,7 @@ class _TCODetailsScreenCopyWidgetState
                                               return Row(
                                                 mainAxisSize: MainAxisSize.max,
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment.center,
+                                                    MainAxisAlignment.start,
                                                 children: List.generate(
                                                     tcoDetailsRowItems.length,
                                                     (tcoDetailsRowItemsIndex) {
