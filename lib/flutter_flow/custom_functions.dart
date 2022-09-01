@@ -225,7 +225,7 @@ List<dynamic> getCostNameColumn(dynamic responseData) {
   List<String> listOfFpnAmt = [responseData["FpnAmt"].toString()];
   List<String> listOfFpnAmtWord = [responseData["FpnAmtWord"].toString()];
 
-  for (int k = 0; k < lenOfYear; k++) {
+  for (int k = 1; k < lenOfYear; k++) {
     listOfFpnAmt.add(" ");
     listOfFpnAmtWord.add(" ");
   }
