@@ -2601,7 +2601,7 @@ class _RequestDetailPageWidgetState extends State<RequestDetailPageWidget> {
                             ),
                             child: InkWell(
                               onTap: () async {
-                                context.pushNamed(
+                                context.goNamed(
                                   'TCODetailsScreenCopy',
                                   queryParams: {
                                     'selectedfpnNumber': serializeParam(

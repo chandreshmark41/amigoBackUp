@@ -214,7 +214,7 @@ List<dynamic> getTableDataForTcoDetailsCopy(dynamic tcoDetailsResponse) {
   return listOfList;
 }
 
-List<dynamic> getCostNameColumn(dynamic responseData) {
+List<dynamic> getTableDataOfTco(dynamic responseData) {
   Map<String, dynamic> vData = responseData["vData"];
   late int lenOfYear;
   for (var i in vData.keys) {
