@@ -322,6 +322,13 @@ List<dynamic> getCostNameColumn(dynamic responseData) {
     var subList = <String>[];
     //print("coming in for loop" + i);
 
+    if (i == "OneTimeCost" ||
+        i == "AppCost" ||
+        i == "InfraCost" ||
+        i == "RecurCost") {
+      subList.add(tcoRowKeysMapping[i]!);
+    }
+
     if (vData.containsKey(i)) {
       String? value = tcoRowKeysMapping[i];
       subList.add(value!);
