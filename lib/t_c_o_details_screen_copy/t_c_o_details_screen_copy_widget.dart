@@ -239,26 +239,6 @@ class _TCODetailsScreenCopyWidgetState
                               },
                             ),
                           ),
-                          Container(
-                            width: 100,
-                            height: 100,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                            ),
-                            child: Text(
-                              'FPN Amount (In Rupees)  -  ${FPNTCODetailsCall.fpnAmt(
-                                tCODetailsScreenCopyFPNTCODetailsResponse
-                                    .jsonBody,
-                              ).toString()}',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyText1
-                                  .override(
-                                    fontFamily: 'Roboto',
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                            ),
-                          ),
                         ],
                       ),
                     ],
