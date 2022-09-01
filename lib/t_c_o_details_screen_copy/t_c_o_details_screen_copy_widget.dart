@@ -155,103 +155,110 @@ class _TCODetailsScreenCopyWidgetState
                       },
                     ),
                   ),
-                  SingleChildScrollView(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Container(
-                          width: double.infinity,
-                          height: 50,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context).tertiaryBlue500,
-                          ),
-                          alignment: AlignmentDirectional(-1, 0),
-                          child: Align(
-                            alignment: AlignmentDirectional(-0.9, 0),
-                            child: Text(
-                              'One Time Cost',
-                              textAlign: TextAlign.start,
-                              style: FlutterFlowTheme.of(context).bodyText1,
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Container(
+                            width: double.infinity,
+                            height: 50,
+                            decoration: BoxDecoration(
+                              color:
+                                  FlutterFlowTheme.of(context).tertiaryBlue500,
+                            ),
+                            alignment: AlignmentDirectional(-1, 0),
+                            child: Align(
+                              alignment: AlignmentDirectional(-0.9, 0),
+                              child: Text(
+                                'One Time Cost',
+                                textAlign: TextAlign.start,
+                                style: FlutterFlowTheme.of(context).bodyText1,
+                              ),
                             ),
                           ),
-                        ),
-                        Container(
-                          width: double.infinity,
-                          height: 700,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                          ),
-                          child: Builder(
-                            builder: (context) {
-                              final tcoDataTableListItems = functions
-                                  .getCostNameColumn(
-                                      tCODetailsScreenCopyFPNTCODetailsResponse
-                                          .jsonBody)
-                                  .map((e) => e)
-                                  .toList();
-                              return ListView.builder(
-                                padding: EdgeInsets.zero,
-                                primary: false,
-                                scrollDirection: Axis.vertical,
-                                itemCount: tcoDataTableListItems.length,
-                                itemBuilder:
-                                    (context, tcoDataTableListItemsIndex) {
-                                  final tcoDataTableListItemsItem =
-                                      tcoDataTableListItems[
-                                          tcoDataTableListItemsIndex];
-                                  return Builder(
-                                    builder: (context) {
-                                      final tcoDetailsRowItems =
-                                          tcoDataTableListItemsItem.toList();
-                                      return Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: List.generate(
-                                            tcoDetailsRowItems.length,
-                                            (tcoDetailsRowItemsIndex) {
-                                          final tcoDetailsRowItemsItem =
-                                              tcoDetailsRowItems[
-                                                  tcoDetailsRowItemsIndex];
-                                          return Expanded(
-                                            child: Container(
-                                              width: 100,
-                                              height: 60,
-                                              decoration: BoxDecoration(
-                                                border: Border.all(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryShadesBlack,
-                                                  width: 0.5,
-                                                ),
-                                              ),
-                                              child: Align(
-                                                alignment:
-                                                    AlignmentDirectional(0, 0),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(2, 0, 2, 0),
-                                                  child: Text(
-                                                    tcoDetailsRowItemsItem,
-                                                    style: FlutterFlowTheme.of(
+                          Container(
+                            width: double.infinity,
+                            height: 700,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                            ),
+                            child: Builder(
+                              builder: (context) {
+                                final tcoDataTableListItems = functions
+                                    .getCostNameColumn(
+                                        tCODetailsScreenCopyFPNTCODetailsResponse
+                                            .jsonBody)
+                                    .map((e) => e)
+                                    .toList();
+                                return ListView.builder(
+                                  padding: EdgeInsets.zero,
+                                  primary: false,
+                                  scrollDirection: Axis.vertical,
+                                  itemCount: tcoDataTableListItems.length,
+                                  itemBuilder:
+                                      (context, tcoDataTableListItemsIndex) {
+                                    final tcoDataTableListItemsItem =
+                                        tcoDataTableListItems[
+                                            tcoDataTableListItemsIndex];
+                                    return Builder(
+                                      builder: (context) {
+                                        final tcoDetailsRowItems =
+                                            tcoDataTableListItemsItem.toList();
+                                        return Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: List.generate(
+                                              tcoDetailsRowItems.length,
+                                              (tcoDetailsRowItemsIndex) {
+                                            final tcoDetailsRowItemsItem =
+                                                tcoDetailsRowItems[
+                                                    tcoDetailsRowItemsIndex];
+                                            return Expanded(
+                                              child: Container(
+                                                width: 100,
+                                                height: 60,
+                                                decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                    color: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodyText1,
+                                                        .primaryShadesBlack,
+                                                    width: 0.5,
+                                                  ),
+                                                ),
+                                                child: Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0, 0),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                2, 0, 2, 0),
+                                                    child: Text(
+                                                      tcoDetailsRowItemsItem,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyText1,
+                                                    ),
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                          );
-                                        }),
-                                      );
-                                    },
-                                  );
-                                },
-                              );
-                            },
+                                            );
+                                          }),
+                                        );
+                                      },
+                                    );
+                                  },
+                                );
+                              },
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ],
