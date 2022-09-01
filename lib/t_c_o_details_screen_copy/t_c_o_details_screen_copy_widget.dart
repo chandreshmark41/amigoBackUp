@@ -167,11 +167,9 @@ class _TCODetailsScreenCopyWidgetState
                         child: Builder(
                           builder: (context) {
                             final tcoDataTableListItems = functions
-                                .getTableDataForTcoDetails(
-                                    FPNTCODetailsCall.vData(
-                                  tCODetailsScreenCopyFPNTCODetailsResponse
-                                      .jsonBody,
-                                ))
+                                .getCostNameColumn(
+                                    tCODetailsScreenCopyFPNTCODetailsResponse
+                                        .jsonBody)
                                 .map((e) => e)
                                 .toList();
                             return ListView.builder(
