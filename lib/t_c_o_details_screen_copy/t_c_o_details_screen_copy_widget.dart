@@ -110,10 +110,10 @@ class _TCODetailsScreenCopyWidgetState
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Container(
-                          width: 858,
+                          width: 1200,
                           height: double.infinity,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
