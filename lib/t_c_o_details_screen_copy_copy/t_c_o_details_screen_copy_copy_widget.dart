@@ -184,35 +184,41 @@ class _TCODetailsScreenCopyCopyWidgetState
                                             .jsonBody,
                                       ))
                                       .toList();
-                                  return Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: List.generate(headerData.length,
-                                        (headerDataIndex) {
-                                      final headerDataItem =
-                                          headerData[headerDataIndex];
-                                      return Container(
-                                        width: 300,
-                                        height: 60,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .tertiaryBlue500,
-                                          border: Border.all(
+                                  return SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: List.generate(headerData.length,
+                                          (headerDataIndex) {
+                                        final headerDataItem =
+                                            headerData[headerDataIndex];
+                                        return Container(
+                                          width: 300,
+                                          height: 60,
+                                          decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
-                                                .primaryNeutral900,
+                                                .tertiaryBlue500,
+                                            border: Border.all(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryNeutral900,
+                                            ),
                                           ),
-                                        ),
-                                        child: Align(
-                                          alignment: AlignmentDirectional(0, 0),
-                                          child: Text(
-                                            headerDataItem,
-                                            textAlign: TextAlign.center,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyText1,
+                                          child: Align(
+                                            alignment:
+                                                AlignmentDirectional(0, 0),
+                                            child: Text(
+                                              headerDataItem,
+                                              textAlign: TextAlign.center,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1,
+                                            ),
                                           ),
-                                        ),
-                                      );
-                                    }),
+                                        );
+                                      }),
+                                    ),
                                   );
                                 },
                               ),
