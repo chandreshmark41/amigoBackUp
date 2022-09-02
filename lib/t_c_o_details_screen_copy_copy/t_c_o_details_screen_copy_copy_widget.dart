@@ -94,86 +94,69 @@ class _TCODetailsScreenCopyCopyWidgetState
           body: SafeArea(
             child: GestureDetector(
               onTap: () => FocusScope.of(context).unfocus(),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
+              child: ListView(
+                padding: EdgeInsets.zero,
+                scrollDirection: Axis.horizontal,
                 children: [
-                  Expanded(
-                    child: Builder(
-                      builder: (context) {
-                        final tcoDataList = functions
-                            .getTableDataOfTco(FPNTCODetailsCall.vData(
-                              tCODetailsScreenCopyCopyFPNTCODetailsResponse
-                                  .jsonBody,
-                            ))
-                            .map((e) => e)
-                            .toList();
-                        return ListView.builder(
-                          padding: EdgeInsets.zero,
-                          scrollDirection: Axis.vertical,
-                          itemCount: tcoDataList.length,
-                          itemBuilder: (context, tcoDataListIndex) {
-                            final tcoDataListItem =
-                                tcoDataList[tcoDataListIndex];
-                            return Container(
-                              width: 100,
-                              height: 100,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Expanded(
-                                    child: Builder(
-                                      builder: (context) {
-                                        final tcoDataObject =
-                                            tcoDataListItem.toList();
-                                        return ListView.builder(
-                                          padding: EdgeInsets.zero,
-                                          scrollDirection: Axis.horizontal,
-                                          itemCount: tcoDataObject.length,
-                                          itemBuilder:
-                                              (context, tcoDataObjectIndex) {
-                                            final tcoDataObjectItem =
-                                                tcoDataObject[
-                                                    tcoDataObjectIndex];
-                                            return Container(
-                                              width: 100,
-                                              height: 100,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                border: Border.all(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryNeutral800,
-                                                ),
-                                              ),
-                                              child: Align(
-                                                alignment:
-                                                    AlignmentDirectional(0, 0),
-                                                child: Text(
-                                                  tcoDataObjectItem,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyText1,
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                        );
-                                      },
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                        );
-                      },
-                    ),
+                  Builder(
+                    builder: (context) {
+                      final tcoDataList = functions
+                          .getTableDataOfTco(FPNTCODetailsCall.vData(
+                            tCODetailsScreenCopyCopyFPNTCODetailsResponse
+                                .jsonBody,
+                          ))
+                          .map((e) => e)
+                          .toList();
+                      return Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: List.generate(tcoDataList.length,
+                            (tcoDataListIndex) {
+                          final tcoDataListItem = tcoDataList[tcoDataListIndex];
+                          return Container(
+                            width: 100,
+                            height: 100,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                            ),
+                            child: Builder(
+                              builder: (context) {
+                                final tcoObject = tcoDataListItem.toList();
+                                return Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: List.generate(tcoObject.length,
+                                      (tcoObjectIndex) {
+                                    final tcoObjectItem =
+                                        tcoObject[tcoObjectIndex];
+                                    return Container(
+                                      width: 300,
+                                      height: 100,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryNeutral900,
+                                        ),
+                                      ),
+                                      child: Align(
+                                        alignment: AlignmentDirectional(0, 0),
+                                        child: Text(
+                                          tcoObjectItem,
+                                          textAlign: TextAlign.center,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1,
+                                        ),
+                                      ),
+                                    );
+                                  }),
+                                );
+                              },
+                            ),
+                          );
+                        }),
+                      );
+                    },
                   ),
                 ],
               ),
