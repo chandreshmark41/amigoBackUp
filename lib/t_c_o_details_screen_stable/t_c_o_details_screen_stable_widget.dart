@@ -9,8 +9,8 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class TCODetailsScreenCopyCopyWidget extends StatefulWidget {
-  const TCODetailsScreenCopyCopyWidget({
+class TCODetailsScreenStableWidget extends StatefulWidget {
+  const TCODetailsScreenStableWidget({
     Key? key,
     this.selectedfpnNumber,
   }) : super(key: key);
@@ -18,12 +18,12 @@ class TCODetailsScreenCopyCopyWidget extends StatefulWidget {
   final String? selectedfpnNumber;
 
   @override
-  _TCODetailsScreenCopyCopyWidgetState createState() =>
-      _TCODetailsScreenCopyCopyWidgetState();
+  _TCODetailsScreenStableWidgetState createState() =>
+      _TCODetailsScreenStableWidgetState();
 }
 
-class _TCODetailsScreenCopyCopyWidgetState
-    extends State<TCODetailsScreenCopyCopyWidget> {
+class _TCODetailsScreenStableWidgetState
+    extends State<TCODetailsScreenStableWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -56,7 +56,7 @@ class _TCODetailsScreenCopyCopyWidgetState
             ),
           );
         }
-        final tCODetailsScreenCopyCopyFPNTCODetailsResponse = snapshot.data!;
+        final tCODetailsScreenStableFPNTCODetailsResponse = snapshot.data!;
         return Scaffold(
           key: scaffoldKey,
           appBar: AppBar(
@@ -133,42 +133,39 @@ class _TCODetailsScreenCopyCopyWidgetState
                             builder: (context) {
                               final headerData = functions
                                   .getTCOHeaderData(FPNTCODetailsCall.vData(
-                                    tCODetailsScreenCopyCopyFPNTCODetailsResponse
+                                    tCODetailsScreenStableFPNTCODetailsResponse
                                         .jsonBody,
                                   ))
                                   .toList();
-                              return SingleChildScrollView(
-                                scrollDirection: Axis.horizontal,
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: List.generate(headerData.length,
-                                      (headerDataIndex) {
-                                    final headerDataItem =
-                                        headerData[headerDataIndex];
-                                    return Container(
-                                      width: 300,
-                                      height: 60,
-                                      decoration: BoxDecoration(
+                              return Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: List.generate(headerData.length,
+                                    (headerDataIndex) {
+                                  final headerDataItem =
+                                      headerData[headerDataIndex];
+                                  return Container(
+                                    width: 300,
+                                    height: 60,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .tertiaryBlue500,
+                                      border: Border.all(
                                         color: FlutterFlowTheme.of(context)
-                                            .tertiaryBlue500,
-                                        border: Border.all(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryNeutral900,
-                                        ),
+                                            .primaryNeutral900,
                                       ),
-                                      child: Align(
-                                        alignment: AlignmentDirectional(0, 0),
-                                        child: Text(
-                                          headerDataItem,
-                                          textAlign: TextAlign.center,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyText1,
-                                        ),
+                                    ),
+                                    child: Align(
+                                      alignment: AlignmentDirectional(0, 0),
+                                      child: Text(
+                                        headerDataItem,
+                                        textAlign: TextAlign.center,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyText1,
                                       ),
-                                    );
-                                  }),
-                                ),
+                                    ),
+                                  );
+                                }),
                               );
                             },
                           ),
@@ -187,7 +184,7 @@ class _TCODetailsScreenCopyCopyWidgetState
                                   builder: (context) {
                                     final fixedColumnValues = functions
                                         .getFixedColumnData(
-                                            tCODetailsScreenCopyCopyFPNTCODetailsResponse
+                                            tCODetailsScreenStableFPNTCODetailsResponse
                                                 .jsonBody)
                                         .toList();
                                     return Column(
@@ -244,7 +241,7 @@ class _TCODetailsScreenCopyCopyWidgetState
                                           builder: (context) {
                                             final tcoDataList = functions
                                                 .getTableDataOfTco(
-                                                    tCODetailsScreenCopyCopyFPNTCODetailsResponse
+                                                    tCODetailsScreenStableFPNTCODetailsResponse
                                                         .jsonBody)
                                                 .map((e) => e)
                                                 .toList();

@@ -146,6 +146,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
+              name: 'TCODetailsScreenStable',
+              path: 'tCODetailsScreenStable',
+              builder: (context, params) => TCODetailsScreenStableWidget(
+                selectedfpnNumber:
+                    params.getParam('selectedfpnNumber', ParamType.String),
+              ),
+            ),
+            FFRoute(
               name: 'TCODetailsScreenCopyCopy',
               path: 'tCODetailsScreenCopyCopy',
               builder: (context, params) => TCODetailsScreenCopyCopyWidget(

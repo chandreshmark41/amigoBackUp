@@ -21,5 +21,7 @@ export 'feedback_reply_page/feedback_reply_page_widget.dart'
     show FeedbackReplyPageWidget;
 export 't_c_o_details_screen_copy/t_c_o_details_screen_copy_widget.dart'
     show TCODetailsScreenCopyWidget;
+export 't_c_o_details_screen_stable/t_c_o_details_screen_stable_widget.dart'
+    show TCODetailsScreenStableWidget;
 export 't_c_o_details_screen_copy_copy/t_c_o_details_screen_copy_copy_widget.dart'
     show TCODetailsScreenCopyCopyWidget;
