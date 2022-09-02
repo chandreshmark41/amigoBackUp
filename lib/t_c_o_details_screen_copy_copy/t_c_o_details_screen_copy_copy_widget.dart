@@ -106,47 +106,50 @@ class _TCODetailsScreenCopyCopyWidgetState
                                   .jsonBody)
                           .map((e) => e)
                           .toList();
-                      return Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: List.generate(tcoDataList.length,
-                            (tcoDataListIndex) {
-                          final tcoDataListItem = tcoDataList[tcoDataListIndex];
-                          return Builder(
-                            builder: (context) {
-                              final tcoObject = tcoDataListItem.toList();
-                              return Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: List.generate(tcoObject.length,
-                                    (tcoObjectIndex) {
-                                  final tcoObjectItem =
-                                      tcoObject[tcoObjectIndex];
-                                  return Container(
-                                    width: 300,
-                                    height: 100,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      border: Border.all(
+                      return SingleChildScrollView(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: List.generate(tcoDataList.length,
+                              (tcoDataListIndex) {
+                            final tcoDataListItem =
+                                tcoDataList[tcoDataListIndex];
+                            return Builder(
+                              builder: (context) {
+                                final tcoObject = tcoDataListItem.toList();
+                                return Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: List.generate(tcoObject.length,
+                                      (tcoObjectIndex) {
+                                    final tcoObjectItem =
+                                        tcoObject[tcoObjectIndex];
+                                    return Container(
+                                      width: 300,
+                                      height: 60,
+                                      decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
-                                            .primaryNeutral900,
+                                            .secondaryBackground,
+                                        border: Border.all(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryNeutral900,
+                                        ),
                                       ),
-                                    ),
-                                    child: Align(
-                                      alignment: AlignmentDirectional(0, 0),
-                                      child: Text(
-                                        tcoObjectItem,
-                                        textAlign: TextAlign.center,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyText1,
+                                      child: Align(
+                                        alignment: AlignmentDirectional(0, 0),
+                                        child: Text(
+                                          tcoObjectItem,
+                                          textAlign: TextAlign.center,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyText1,
+                                        ),
                                       ),
-                                    ),
-                                  );
-                                }),
-                              );
-                            },
-                          );
-                        }),
+                                    );
+                                  }),
+                                );
+                              },
+                            );
+                          }),
+                        ),
                       );
                     },
                   ),
