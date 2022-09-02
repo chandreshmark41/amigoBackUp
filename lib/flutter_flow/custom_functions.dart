@@ -338,12 +338,12 @@ List<dynamic> getTableDataOfTco(dynamic responseData) {
     var subList = <String>[];
     //print("coming in for loop" + i);
 
-    if (i == "OneTimeCost" ||
+    /**  if (i == "OneTimeCost" ||
         i == "AppCost" ||
         i == "InfraCost" ||
         i == "RecurCost") {
       subList.add(tcoRowKeysMapping[i]!);
-    }
+    } */
 
     if (vData.containsKey(i)) {
       String? value = tcoRowKeysMapping[i];
