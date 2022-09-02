@@ -12,7 +12,7 @@ List<String> getTCOHeaderData(dynamic tcoDetailResponse) {
 
   var listOfYear = <String>[];
 
-  listOfYear.add("Total Expenditure Cost");
+  //listOfYear.add("Total Expenditure Cost");
 
   listOfYear.add("Total Amount");
 
