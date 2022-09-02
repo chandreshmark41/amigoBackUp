@@ -128,18 +128,17 @@ class _TCODetailsScreenCopyCopyWidgetState
                             ),
                           ),
                         ),
-                        Builder(
-                          builder: (context) {
-                            final headerData = functions
-                                .getTCOHeaderData(FPNTCODetailsCall.vData(
-                                  tCODetailsScreenCopyCopyFPNTCODetailsResponse
-                                      .jsonBody,
-                                ))
-                                .toList();
-                            return SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
+                        Expanded(
+                          child: Builder(
+                            builder: (context) {
+                              final headerData = functions
+                                  .getTCOHeaderData(FPNTCODetailsCall.vData(
+                                    tCODetailsScreenCopyCopyFPNTCODetailsResponse
+                                        .jsonBody,
+                                  ))
+                                  .toList();
+                              return Row(
+                                mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: List.generate(headerData.length,
                                     (headerDataIndex) {
@@ -167,9 +166,9 @@ class _TCODetailsScreenCopyCopyWidgetState
                                     ),
                                   );
                                 }),
-                              ),
-                            );
-                          },
+                              );
+                            },
+                          ),
                         ),
                       ],
                     ),
