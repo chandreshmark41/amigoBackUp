@@ -168,6 +168,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 selectedfpnNumber:
                     params.getParam('selectedfpnNumber', ParamType.String),
               ),
+            ),
+            FFRoute(
+              name: 'TCODetailsScreenWebView',
+              path: 'tCODetailsScreenWebView',
+              builder: (context, params) => TCODetailsScreenWebViewWidget(
+                selectedfpnNumber:
+                    params.getParam('selectedfpnNumber', ParamType.String),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ).toRoute(appStateNotifier),

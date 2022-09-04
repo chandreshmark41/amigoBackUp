@@ -27,3 +27,5 @@ export 't_c_o_details_screen_copy_copy/t_c_o_details_screen_copy_copy_widget.dar
     show TCODetailsScreenCopyCopyWidget;
 export 't_c_o_details_screen_a_d/t_c_o_details_screen_a_d_widget.dart'
     show TCODetailsScreenADWidget;
+export 't_c_o_details_screen_web_view/t_c_o_details_screen_web_view_widget.dart'
+    show TCODetailsScreenWebViewWidget;
