@@ -25,3 +25,5 @@ export 't_c_o_details_screen_stable/t_c_o_details_screen_stable_widget.dart'
     show TCODetailsScreenStableWidget;
 export 't_c_o_details_screen_copy_copy/t_c_o_details_screen_copy_copy_widget.dart'
     show TCODetailsScreenCopyCopyWidget;
+export 't_c_o_details_screen_a_d/t_c_o_details_screen_a_d_widget.dart'
+    show TCODetailsScreenADWidget;
