@@ -42,8 +42,8 @@ class _TcoWidgetState extends State<TcoWidget> {
     List<String> listOfFpnAmtWord = [responseData["FpnAmtWord"].toString()];
 
     for (int k = 1; k < lenOfYear; k++) {
-      listOfFpnAmt.add(" ");
-      listOfFpnAmtWord.add(" ");
+      listOfFpnAmt.add("&nbsp;");
+      listOfFpnAmtWord.add("&nbsp;");
     }
 
     vData["FpnAmt"] = listOfFpnAmt;
@@ -160,7 +160,7 @@ class _TcoWidgetState extends State<TcoWidget> {
           i == "RecurCost") {
         subList.add(tcoRowKeysMapping[i]!);
         for (int yearNum = 0; yearNum < lenOfYear; yearNum++) {
-          subList.add(" ");
+          subList.add("&nbsp;");
         }
       }
 
@@ -171,35 +171,102 @@ class _TcoWidgetState extends State<TcoWidget> {
         for (String j in vData[i]) {
           subList.add(j);
         }
-        //print(returnList);
+        //print(subList);
 
       }
       returnList.add(subList);
     }
 
-    print(returnList);
-    for (List<String> list in returnList) {
+    //print(returnList);
+    for (var list in returnList) {
       finalString += "<tr>";
-      for (int itemIndex = 0; itemIndex < list.length; itemIndex++) {
-        if (itemIndex == 0) {
-          if (list[itemIndex] == "OneTimeCost" ||
-              list[itemIndex] == "Recurring Cost / Revenue Costs") {
+      if (list[0] == "OneTimeCost" ||
+          list[0] == "Recurring Cost / Revenue Costs") {
+        print(list);
+        finalString +=
+            '''<th style="background:#33D1FF; text-align:center;" >''' +
+                list[0] +
+                '''</th>''';
+        for (int a = 1; a < list.length; a++) {
+          finalString +=
+              '''<td style="background:#33D1FF; text-align:right;">''' +
+                  list[a] +
+                  '''</td>''';
+        }
+      } else {
+        //     "TotalRecurringCost": "B) Total Recurring Cost",
+        // "TotalCost": "C) Total Cost(C = A+B)",
+        // "ContingencyCost":
+        // "D) Contingency Amount for any increase in cost during project",
+        // "GrandTotal": "E) Total cost including contingency amount (E = C+D)",
+        // "FpnAmt": "FPN Amount (In Rupees)",
+        // "FpnAmtWord": "FPN Amount In Words (In Rupees)"
+        //padding-left: 30px;
+        if (list[0] == "1) ApplicationCost" ||
+            list[0] == "2) Infrastructure Cost" ||
+            list[0] == "3) Total One Time Cost Outflow (3 = 1+2)" ||
+            list[0] == "4) ELA - ULA (Non Cash Outflow)" ||
+            list[0] == "A) Total One Time Cost (A = 3+4)" ||
+            list[0] == "B) Total Recurring Cost" ||
+            list[0] == "C) Total Cost(C = A+B)" ||
+            list[0] ==
+                "D) Contingency Amount for any increase in cost during project" ||
+            list[0] == "E) Total cost including contingency amount (E = C+D)" ||
+            list[0] == "FPN Amount (In Rupees)" ||
+            list[0] == "FPN Amount In Words (In Rupees)") {
+          finalString += '''<th style="background:#eee; text-align:left;" >''' +
+              list[0] +
+              '''</th>''';
+
+          for (int b = 1; b < list.length; b++) {
             finalString +=
-                '''<th style="background:#33D1FF; text-align:left;" >''' +
-                    list[itemIndex] +
-                    "</th>";
-          } else {
-            finalString +=
-                '''<th style="background:#eee; text-align:left;" >''' +
-                    list[itemIndex] +
-                    "</th>";
+                '''<td style="background:#eee; text-align:right;"> <b> ''' +
+                    list[b] +
+                    ''' </b></td>''';
           }
         } else {
-          finalString += "<td>" + list[itemIndex] + "</td>";
+          finalString +=
+              '''<th style="background:#eee; font-weight: normal; padding-left: 50px; text-align:left;" >''' +
+                  list[0] +
+                  ''''</th>''';
+
+          for (int c = 1; c < list.length; c++) {
+            finalString +=
+                '''<td style="background:#eee; text-align:right;"> ''' +
+                    list[c] +
+                    '''</td>''';
+          }
         }
       }
-      finalString += "</tr>";
+
+      // finalString += "<tr>";
+      // for (int itemIndex = 0; itemIndex < list.length; itemIndex++) {
+      //   if (itemIndex == 0) {
+      //     if (list[itemIndex] == "OneTimeCost" ||
+      //         list[itemIndex] == "Recurring Cost / Revenue Costs") {
+      //       finalString +=
+      //           '''<th style="background:#33D1FF; text-align:left;" >''' +
+      //               list[itemIndex] +
+      //               "</th>";
+      //     } else {
+      //       finalString +=
+      //           '''<th style="background:#eee; text-align:left;" >''' +
+      //               list[itemIndex] +
+      //               "</th>";
+      //     }
+      //   }
+      //   else {
+      //     // if(list[0] == "OneTimeCost" || list[0] == "Recurring Cost / Revenue Costs"){
+      //     //   finalString +=
+      //     // }
+      //
+      //     finalString += "<td>" + list[itemIndex] + "</td>";
+      //   }
+      // }
+      // finalString += "</tr>";
+      finalString += '''</tr>''';
     }
+    //print(finalString);
     return finalString;
 
     // Add your function code here!
@@ -276,14 +343,14 @@ class _TcoWidgetState extends State<TcoWidget> {
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-.tableFixHead          { overflow: auto }
-.tableFixHead thead th { position: sticky; top: 0; z-index: 2; background:#339FFF;}
-.tableFixHead tbody th { position: sticky; left: 0; z-index: 1;}
-.tableFixHead thead td {position: sticky; left:0; top: 0; z-index: 3; background:#339FFF; }
+.tableFixHead          { overflow: auto; height: 400px; width: 700px; }
+.tableFixHead thead th { position: sticky; white-space:nowrap ; top: 0; z-index: 2; background:#339FFF;}
+.tableFixHead tbody th { position: sticky;  left: 0; z-index: 1;}
+.tableFixHead thead td {  position: sticky;  left:0; top: 0; z-index: 3; background:#339FFF; }
 
 /* Just common table stuff. Really. */
 table  { border-collapse: collapse; width: 100%; border: 1px solid black;}
-th, td { padding: 8px 16px; white-space:nowrap ; border: 1px solid black;
+th, td { padding: 8px 16px;  border: 1px solid black;
   }
 td {background:#eee;}
 </style>
@@ -292,7 +359,7 @@ td {background:#eee;}
 <div class="tableFixHead">
   <table>
     <thead>
-      <tr><td style="text-align:center;"><b>Total Expenditure Cost </b></td> ''' +
+      <tr><td style="text-align:center; height:40px; width:350px; font-size:14; "><b>Total Expenditure Cost </b></td> ''' +
         getTCOHeaderData(responseData) +
         '''</tr>
     </thead>
@@ -307,6 +374,7 @@ td {background:#eee;}
 </body>
 </html>
  ''';
+    print(htmlString);
 
     final url = Uri.dataFromString(
       htmlString,
