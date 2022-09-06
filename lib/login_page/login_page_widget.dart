@@ -210,7 +210,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                         ).toString());
                                     if (FFAppState().returnStatus == '2') {
                                       if (FFAppState().isIMEIexist == 1) {
-                                        context.pushNamed('HomePage');
+                                        context.goNamed('HomePage');
                                       } else {
                                         var confirmDialogResponse =
                                             await showDialog<bool>(
