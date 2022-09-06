@@ -241,7 +241,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                 ) ??
                                                 false;
                                         if (confirmDialogResponse) {
-                                          context.pushNamed('HomePage');
+                                          context.goNamed('HomePage');
                                         } else {
                                           if (_shouldSetState) setState(() {});
                                           return;
