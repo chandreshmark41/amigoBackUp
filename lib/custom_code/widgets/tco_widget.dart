@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 import 'package:webview_flutter/webview_flutter.dart';
 import 'dart:convert';
+import '../actions/lock_orientation_portrait.dart';
 
 class TcoWidget extends StatefulWidget {
   const TcoWidget({
