@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 // Begin custom widget code
 import 'package:webview_flutter/webview_flutter.dart';
 import 'dart:convert';
-import '../actions/lock_orientation_portrait.dart';
+import 'package:flutter/services.dart';
 
 class TcoWidget extends StatefulWidget {
   const TcoWidget({
@@ -390,8 +390,9 @@ td {background:#eee;}
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        context.pop();
-        await lockOrientationPortrait();
+        Navigator.pop(context);
+        await SystemChrome.setPreferredOrientations(
+            [DeviceOrientation.portraitUp]);
         return false;
       },
       child: WebView(
