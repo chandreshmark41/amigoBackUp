@@ -387,11 +387,18 @@ td {background:#eee;}
 
   @override
   Widget build(BuildContext context) {
-    return WebView(
-        javascriptMode: JavascriptMode.unrestricted,
-        onWebViewCreated: (controller) {
-          this.controller = controller;
-          loadLocalHtml(widget.responseData);
-        });
+    return WillPopScope(
+      onWillPop: () async {
+        context.pop();
+        await lockOrientationPortrait();
+        return false;
+      },
+      child: WebView(
+          javascriptMode: JavascriptMode.unrestricted,
+          onWebViewCreated: (controller) {
+            this.controller = controller;
+            loadLocalHtml(widget.responseData);
+          }),
+    );
   }
 }
