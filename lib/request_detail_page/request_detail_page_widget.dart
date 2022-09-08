@@ -5887,7 +5887,11 @@ class _RequestDetailPageWidgetState extends State<RequestDetailPageWidget> {
                                           MediaQuery.of(context).size.height *
                                               0.4,
                                       child: ApproveDialogScreenWidget(
-                                        fpnNumber: widget.fpnNumber,
+                                        fpnNumber: getJsonField(
+                                          requestDetailPageFPNRequestDetailsResponse
+                                              .jsonBody,
+                                          r'''$.FPNNumber''',
+                                        ).toString(),
                                       ),
                                     ),
                                   );
