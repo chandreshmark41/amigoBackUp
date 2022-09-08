@@ -1,4 +1,6 @@
 import '../backend/api_requests/api_calls.dart';
+import '../components/approve_dialog_screen_widget.dart';
+import '../components/reject_dialog_screen_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
@@ -5871,8 +5873,26 @@ class _RequestDetailPageWidgetState extends State<RequestDetailPageWidget> {
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(5, 0, 0, 0),
                           child: FFButtonWidget(
-                            onPressed: () {
-                              print('Button pressed ...');
+                            onPressed: () async {
+                              await showModalBottomSheet(
+                                isScrollControlled: true,
+                                backgroundColor:
+                                    FlutterFlowTheme.of(context).darkGrey,
+                                context: context,
+                                builder: (context) {
+                                  return Padding(
+                                    padding: MediaQuery.of(context).viewInsets,
+                                    child: Container(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.4,
+                                      child: ApproveDialogScreenWidget(
+                                        fpnNumber: widget.fpnNumber,
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
                             },
                             text: 'Approve',
                             options: FFButtonOptions(
@@ -5896,8 +5916,25 @@ class _RequestDetailPageWidgetState extends State<RequestDetailPageWidget> {
                           ),
                         ),
                         FFButtonWidget(
-                          onPressed: () {
-                            print('Button pressed ...');
+                          onPressed: () async {
+                            await showModalBottomSheet(
+                              isScrollControlled: true,
+                              backgroundColor:
+                                  FlutterFlowTheme.of(context).darkGrey,
+                              context: context,
+                              builder: (context) {
+                                return Padding(
+                                  padding: MediaQuery.of(context).viewInsets,
+                                  child: Container(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.4,
+                                    child: RejectDialogScreenWidget(
+                                      fpnNumber: widget.fpnNumber,
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
                           },
                           text: 'Reject',
                           options: FFButtonOptions(
@@ -5921,8 +5958,8 @@ class _RequestDetailPageWidgetState extends State<RequestDetailPageWidget> {
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
                           child: FFButtonWidget(
-                            onPressed: () {
-                              print('Button pressed ...');
+                            onPressed: () async {
+                              context.pushNamed('ConfirmFeedbackPageChandresh');
                             },
                             text: 'Feedback',
                             options: FFButtonOptions(
